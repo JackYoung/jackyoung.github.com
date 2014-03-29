@@ -4,11 +4,11 @@
   <title><![CDATA[Sonic's blog.]]></title>
   <link href="http://JackYoung.github.io/atom.xml" rel="self"/>
   <link href="http://JackYoung.github.io/"/>
-  <updated>2014-03-29T17:34:44+08:00</updated>
+  <updated>2014-03-29T17:48:52+08:00</updated>
   <id>http://JackYoung.github.io/</id>
   <author>
     <name><![CDATA[Sonic Young]]></name>
-    
+    <email><![CDATA[short7116@gmail.com]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
