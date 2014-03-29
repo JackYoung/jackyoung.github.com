@@ -3,11 +3,11 @@
 # ----------------------- #
 
 url: http://JackYoung.github.io
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
-simple_search: https://www.google.com/search
-description:
+title: Sonic's blog.
+subtitle: iOS & Android 开发者， 现就职于厦门，热爱产品设计。
+author: Sonic Young
+# simple_search: https://www.google.com/search
+description: 
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
@@ -62,6 +62,9 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
 #   3rd Party Settings    #
 # ----------------------- #
 
+# Email
+email: short7116@gmail.com
+
 # Github repositories
 github_user:
 github_repo_count: 0
@@ -98,3 +101,6 @@ google_analytics_tracking_id:
 
 # Facebook Like
 facebook_like: false
+
+# Weibo Link 
+weibo_user: ysy7116

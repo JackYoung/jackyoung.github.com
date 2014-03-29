@@ -1,4 +1,8 @@
-<ul class="main-navigation">
-  <li><a href="{{ root_url }}/">Blog</a></li>
-  <li><a href="{{ root_url }}/blog/archives">Archives</a></li>
+<ul class="main">
+    <li><a href="{{ root_url }}/blog/archives">iOS专题</a></li>
+    <li><a href="{{ root_url }}/blog/archives">Android专题</a></li>
+    <li><a href="#">关于我</a></li>
 </ul>
+{% if site.subtitle %}
+	<p class="subtitle">{{ site.subtitle }}</p>
+{% endif %}
