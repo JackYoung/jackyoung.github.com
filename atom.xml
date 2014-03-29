@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Sonic Young's blog.]]></title>
+  <title><![CDATA[Sonic's blog.]]></title>
   <link href="http://JackYoung.github.io/atom.xml" rel="self"/>
   <link href="http://JackYoung.github.io/"/>
-  <updated>2014-03-29T15:42:13+08:00</updated>
+  <updated>2014-03-29T15:48:11+08:00</updated>
   <id>http://JackYoung.github.io/</id>
   <author>
     <name><![CDATA[Sonic Young]]></name>
