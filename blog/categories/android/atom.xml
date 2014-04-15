@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Android | Sonic's blog.]]></title>
+  <link href="http://blog.sonicpart.com/blog/categories/android/atom.xml" rel="self"/>
+  <link href="http://blog.sonicpart.com/"/>
+  <updated>2014-04-15T23:35:50+08:00</updated>
+  <id>http://blog.sonicpart.com/</id>
+  <author>
+    <name><![CDATA[Sonic Young]]></name>
+    <email><![CDATA[short7116@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu12.04 GoAgent下载Android 4.0源码]]></title>
+    <link href="http://blog.sonicpart.com/blog/2014/04/15/ubuntu12-dot-04-goagentxia-zai-androidyuan-ma/"/>
+    <updated>2014-04-15T21:37:38+08:00</updated>
+    <id>http://blog.sonicpart.com/blog/2014/04/15/ubuntu12-dot-04-goagentxia-zai-androidyuan-ma</id>
+    <content type="html"><![CDATA[<p>由于GFW的原因在国内下载Android源码经常因为网络错误导致无法下载，故而试着通过Goagent来进行下载。先按照教程下载配置 <a href="https://code.google.com/p/goagent/wiki/GoAgent_Linux">GoAgent</a>。</p>
+
+<h3>设置代理</h3>
+
+<p>设置curl和repo的代理，如果有自定义GoAgent的代理端口，则需要把8087替换为自定义的代理端口。
+<code>sh
+export http_proxy = http://127.0.0.1:8087
+export HTTP_PROXY = http://127.0.0.1:8087
+export HTTPS_PROXY = https://127.0.0.1:8087
+</code></p>
+
+<h3>下载repo</h3>
+
+<p>1、在当前用户目录下创建bin目录，并把该目录添加到终端的环境变量中。
+<code>sh
+$ mkdir ~/bin
+$ PATH=~/bin:$PATH
+</code>
+2、下载repo并设置权限
+<code>sh
+$ curl http://commondatastorage.googleapis.com/git-repo-downloads/repo &gt; ~/bin/repo
+$ chmod a+x ~/bin/repo
+</code></p>
+
+<h3>初始化repo</h3>
+
+<p>1、创建一个Android源码的路径，并进入。
+<code>sh
+$ mkdir ~/android-4.0.1_r1
+$ cd android-4.0.1_r1
+</code>
+2、指定repo要下载的分支，此时会提示你需要输入邮箱和姓名，按照提示输入即可。
+<code>sh
+$ repo init -u https://android.googlesource.com/platform/manifest -b android-4.0.1_r1
+</code></p>
+
+<h3>下载源码</h3>
+
+<p><code>sh
+$ repo sync
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>

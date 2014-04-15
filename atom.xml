@@ -2,15 +2,84 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Sonic's blog.]]></title>
-  <link href="http://JackYoung.github.io/atom.xml" rel="self"/>
-  <link href="http://JackYoung.github.io/"/>
-  <updated>2014-04-14T23:26:02+08:00</updated>
-  <id>http://JackYoung.github.io/</id>
+  <link href="http://blog.sonicpart.com/atom.xml" rel="self"/>
+  <link href="http://blog.sonicpart.com/"/>
+  <updated>2014-04-15T23:35:50+08:00</updated>
+  <id>http://blog.sonicpart.com/</id>
   <author>
     <name><![CDATA[Sonic Young]]></name>
     <email><![CDATA[short7116@gmail.com]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu12.04 GoAgent下载Android 4.0源码]]></title>
+    <link href="http://blog.sonicpart.com/blog/2014/04/15/ubuntu12-dot-04-goagentxia-zai-androidyuan-ma/"/>
+    <updated>2014-04-15T21:37:38+08:00</updated>
+    <id>http://blog.sonicpart.com/blog/2014/04/15/ubuntu12-dot-04-goagentxia-zai-androidyuan-ma</id>
+    <content type="html"><![CDATA[<p>由于GFW的原因在国内下载Android源码经常因为网络错误导致无法下载，故而试着通过Goagent来进行下载。先按照教程下载配置 <a href="https://code.google.com/p/goagent/wiki/GoAgent_Linux">GoAgent</a>。</p>
+
+<h3>设置代理</h3>
+
+<p>设置curl和repo的代理，如果有自定义GoAgent的代理端口，则需要把8087替换为自定义的代理端口。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">export </span><span class="nv">http_proxy</span> <span class="o">=</span> http://127.0.0.1:8087
+</span><span class='line'><span class="nb">export </span><span class="nv">HTTP_PROXY</span> <span class="o">=</span> http://127.0.0.1:8087
+</span><span class='line'><span class="nb">export </span><span class="nv">HTTPS_PROXY</span> <span class="o">=</span> https://127.0.0.1:8087
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>下载repo</h3>
+
+<p>1、在当前用户目录下创建bin目录，并把该目录添加到终端的环境变量中。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>mkdir ~/bin
+</span><span class='line'><span class="nv">$ PATH</span><span class="o">=</span>~/bin:<span class="nv">$PATH</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>2、下载repo并设置权限</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>curl http://commondatastorage.googleapis.com/git-repo-downloads/repo &gt; ~/bin/repo
+</span><span class='line'><span class="nv">$ </span>chmod a+x ~/bin/repo
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>初始化repo</h3>
+
+<p>1、创建一个Android源码的路径，并进入。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>mkdir ~/android-4.0.1_r1
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>android-4.0.1_r1
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>2、指定repo要下载的分支，此时会提示你需要输入邮箱和姓名，按照提示输入即可。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>repo init -u https://android.googlesource.com/platform/manifest -b android-4.0.1_r1
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>下载源码</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>repo sync
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
 </feed>
