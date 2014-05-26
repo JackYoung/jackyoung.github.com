@@ -10,9 +10,9 @@ categories: Android
 ###设置代理
 设置curl和repo的代理，如果有自定义GoAgent的代理端口，则需要把8087替换为自定义的代理端口。
 ```sh
-export http_proxy = http://127.0.0.1:8087
-export HTTP_PROXY = http://127.0.0.1:8087
-export HTTPS_PROXY = https://127.0.0.1:8087
+export http_proxy=http://127.0.0.1:8087
+export HTTP_PROXY=http://127.0.0.1:8087
+export HTTPS_PROXY=https://127.0.0.1:8087
 ```
 ###下载repo
 1、在当前用户目录下创建bin目录，并把该目录添加到终端的环境变量中。
