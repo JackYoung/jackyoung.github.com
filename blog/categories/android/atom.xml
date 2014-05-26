@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Android | Sonic's blog.]]></title>
   <link href="http://blog.sonicpart.com/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://blog.sonicpart.com/"/>
-  <updated>2014-04-15T23:35:50+08:00</updated>
+  <updated>2014-05-26T22:41:15+08:00</updated>
   <id>http://blog.sonicpart.com/</id>
   <author>
     <name><![CDATA[Sonic Young]]></name>
@@ -24,9 +24,9 @@
 
 <p>设置curl和repo的代理，如果有自定义GoAgent的代理端口，则需要把8087替换为自定义的代理端口。
 <code>sh
-export http_proxy = http://127.0.0.1:8087
-export HTTP_PROXY = http://127.0.0.1:8087
-export HTTPS_PROXY = https://127.0.0.1:8087
+export http_proxy=http://127.0.0.1:8087
+export HTTP_PROXY=http://127.0.0.1:8087
+export HTTPS_PROXY=https://127.0.0.1:8087
 </code></p>
 
 <h3>下载repo</h3>

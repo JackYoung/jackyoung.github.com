@@ -4,7 +4,7 @@
   <title><![CDATA[Sonic's blog.]]></title>
   <link href="http://blog.sonicpart.com/atom.xml" rel="self"/>
   <link href="http://blog.sonicpart.com/"/>
-  <updated>2014-04-15T23:35:50+08:00</updated>
+  <updated>2014-05-26T22:41:15+08:00</updated>
   <id>http://blog.sonicpart.com/</id>
   <author>
     <name><![CDATA[Sonic Young]]></name>
@@ -27,9 +27,9 @@
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">export </span><span class="nv">http_proxy</span> <span class="o">=</span> http://127.0.0.1:8087
-</span><span class='line'><span class="nb">export </span><span class="nv">HTTP_PROXY</span> <span class="o">=</span> http://127.0.0.1:8087
-</span><span class='line'><span class="nb">export </span><span class="nv">HTTPS_PROXY</span> <span class="o">=</span> https://127.0.0.1:8087
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">export </span><span class="nv">http_proxy</span><span class="o">=</span>http://127.0.0.1:8087
+</span><span class='line'><span class="nb">export </span><span class="nv">HTTP_PROXY</span><span class="o">=</span>http://127.0.0.1:8087
+</span><span class='line'><span class="nb">export </span><span class="nv">HTTPS_PROXY</span><span class="o">=</span>https://127.0.0.1:8087
 </span></code></pre></td></tr></table></div></figure>
 
 
