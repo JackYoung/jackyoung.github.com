@@ -9,7 +9,7 @@
 	<meta name="author" content="Sonic Young">
 
 	
-	<meta name="description" content="Apr 15th, 2014 Android Ubuntu12.04 GoAgent下载Android 4.0源码 由于GFW的原因在国内下载Android源码经常因为网络错误导致无法下载，故而试着通过Goagent来进行下载。先按照教程下载配置 GoAgent。 设置代理 &hellip;">
+	<meta name="description" content="May 26th, 2014 Android Android中使用protobuf Android中使用protobuf Protobuf是Google开发的一种数据描述语言，大家可以参照json和xml来进行理解。但是相对于json和xml，Protobu的传输内容和解析熟读却有着极大的优势 &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -95,6 +95,167 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-26T23:07:52+08:00" data-updated="true" itemprop="datePublished">May 26<span>th</span>, 2014</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/android/'>Android</a>
+
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2014/05/26/androidzhong-shi-yong-protobuf/" itemprop="url">Android中使用protobuf</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<h1>Android中使用protobuf</h1>
+
+<p>Protobuf是Google开发的一种数据描述语言，大家可以参照json和xml来进行理解。但是相对于json和xml，Protobu的传输内容和解析熟读却有着极大的优势。</p>
+
+<p>Protobuf分为complier（用于生成语言相关文件）和runtimelib（嵌入到程序中解析收到的数据）两个库，我们需要使用complier编译生成所需要的语言的文件，比如Android中我们就需要生成一个.java文件。然而标准protobuf的runtimelib大到700kb左右，所以Android开发团队提供了一套mircro的compiler和runtimelib。</p>
+
+<h3>本文环境</h3>
+
+<p>Ubuntu12.04</p>
+
+<h3>编译生成标准protobuf</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone https://android.googlesource.com/platform/external/protobuf
+</span><span class='line'>$ cd protobuf/
+</span><span class='line'>$ ./configure
+</span><span class='line'>$ make</span></code></pre></td></tr></table></div></figure>
+
+
+<p>之后在protobuf/src目录下会有一个protoc文件生成，最好生成软链</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cd /usr/local/bin
+</span><span class='line'>$ sudo ln -s path/to/protobuf/src/protoc/ protoc</span></code></pre></td></tr></table></div></figure>
+
+
+<p>可以使用</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ protoc -h</span></code></pre></td></tr></table></div></figure>
+
+
+<p>进行检测</p>
+
+<blockquote><p>……</p>
+
+<p>&mdash;cpp_out=OUT_DIR           Generate C++ header and source.</p>
+
+<p>&mdash;java_out=OUT_DIR          Generate Java source file.</p>
+
+<p>&mdash;javamicro_out=OUT_DIR     Generate Java source file micro runtime.</p>
+
+<p>&mdash;javanano_out=OUT_DIR      Generate Java source file nano runtime.</p>
+
+<p>&mdash;python_out=OUT_DIR        Generate Python source file.</p></blockquote>
+
+<p>如上可以看到</p>
+
+<p>&mdash;javamicro_out=OUT_DIR Generate Java source file micro runtime.</p>
+
+<p>&mdash;javanano_out=OUT_DIR Generate Java source file nano runtime.</p>
+
+<p>就说明编译成功。</p>
+
+<p>接下来将protobuf/java/src/main/java/com/google/protobuf/micro的代码拷贝到开发环境中，这个就是protbuf的rubtimelib，也可以下载protobuf-micro.jar。</p>
+
+<p>编写一个名为entity.proto的文件，假设内容为</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>message Person {
+</span><span class='line'>    required string name=1;
+</span><span class='line'>    required int32 id=2;
+</span><span class='line'>    optional string email=3;
+</span><span class='line'>
+</span><span class='line'>    enum PhoneType {
+</span><span class='line'>        MOBILE=0;
+</span><span class='line'>        HOME=1;
+</span><span class='line'>        WORK=2;
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    message PhoneNumber {
+</span><span class='line'>        required string number=1;
+</span><span class='line'>        optional PhoneType type=2 [default=HOME];
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    repeated PhoneNumber phone=4;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后使用</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ protoc --javamicro_out=. entity.proto</span></code></pre></td></tr></table></div></figure>
+
+
+<p>生成文件，把生成的Entity.java拷贝到工程目录下。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>// 生成要byte数据
+</span><span class='line'>Entity.Person person = new Entity.Person();
+</span><span class='line'>byte[] personBytes = person.toByteString();
+</span><span class='line'>
+</span><span class='line'>// 解析byte数据
+</span><span class='line'>Entity.Person parsedPerson = Entity.Person.parseFrom(psersonBytes);
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>PS</h2>
+
+<p>第一次使用protobuf的时候选择了<a href="https://github.com/square/wire">wire</a>，
+这是一个由square公司开发的应用于Android的protobuf的库。在使用过程中发现wire无法混淆，这在一些需要对自己的通讯协议进行加密的情况下不是很适用。</p>
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">

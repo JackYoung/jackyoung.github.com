@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Android | Sonic's blog.]]></title>
   <link href="http://blog.sonicpart.com/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://blog.sonicpart.com/"/>
-  <updated>2014-05-26T22:41:15+08:00</updated>
+  <updated>2014-05-27T00:40:22+08:00</updated>
   <id>http://blog.sonicpart.com/</id>
   <author>
     <name><![CDATA[Sonic Young]]></name>
@@ -12,6 +12,109 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Android中使用protobuf]]></title>
+    <link href="http://blog.sonicpart.com/blog/2014/05/26/androidzhong-shi-yong-protobuf/"/>
+    <updated>2014-05-26T23:07:52+08:00</updated>
+    <id>http://blog.sonicpart.com/blog/2014/05/26/androidzhong-shi-yong-protobuf</id>
+    <content type="html"><![CDATA[<h1>Android中使用protobuf</h1>
+
+<p>Protobuf是Google开发的一种数据描述语言，大家可以参照json和xml来进行理解。但是相对于json和xml，Protobu的传输内容和解析熟读却有着极大的优势。</p>
+
+<p>Protobuf分为complier（用于生成语言相关文件）和runtimelib（嵌入到程序中解析收到的数据）两个库，我们需要使用complier编译生成所需要的语言的文件，比如Android中我们就需要生成一个.java文件。然而标准protobuf的runtimelib大到700kb左右，所以Android开发团队提供了一套mircro的compiler和runtimelib。</p>
+
+<h3>本文环境</h3>
+
+<p>Ubuntu12.04</p>
+
+<h3>编译生成标准protobuf</h3>
+
+<p><code>
+$ git clone https://android.googlesource.com/platform/external/protobuf
+$ cd protobuf/
+$ ./configure
+$ make
+</code>
+之后在protobuf/src目录下会有一个protoc文件生成，最好生成软链
+<code>
+$ cd /usr/local/bin
+$ sudo ln -s path/to/protobuf/src/protoc/ protoc
+</code>
+可以使用
+<code>
+$ protoc -h
+</code>
+进行检测</p>
+
+<blockquote><p>……</p>
+
+<p>&mdash;cpp_out=OUT_DIR           Generate C++ header and source.</p>
+
+<p>&mdash;java_out=OUT_DIR          Generate Java source file.</p>
+
+<p>&mdash;javamicro_out=OUT_DIR     Generate Java source file micro runtime.</p>
+
+<p>&mdash;javanano_out=OUT_DIR      Generate Java source file nano runtime.</p>
+
+<p>&mdash;python_out=OUT_DIR        Generate Python source file.</p></blockquote>
+
+<p>如上可以看到</p>
+
+<p>&mdash;javamicro_out=OUT_DIR Generate Java source file micro runtime.</p>
+
+<p>&mdash;javanano_out=OUT_DIR Generate Java source file nano runtime.</p>
+
+<p>就说明编译成功。</p>
+
+<p>接下来将protobuf/java/src/main/java/com/google/protobuf/micro的代码拷贝到开发环境中，这个就是protbuf的rubtimelib，也可以下载protobuf-micro.jar。</p>
+
+<p>编写一个名为entity.proto的文件，假设内容为</p>
+
+<p>```
+message Person {</p>
+
+<pre><code>required string name=1;
+required int32 id=2;
+optional string email=3;
+
+enum PhoneType {
+    MOBILE=0;
+    HOME=1;
+    WORK=2;
+}
+
+message PhoneNumber {
+    required string number=1;
+    optional PhoneType type=2 [default=HOME];
+}
+
+repeated PhoneNumber phone=4;
+</code></pre>
+
+<p>}
+<code>
+然后使用
+</code>
+$ protoc &mdash;javamicro_out=. entity.proto
+<code>
+生成文件，把生成的Entity.java拷贝到工程目录下。
+</code>
+// 生成要byte数据
+Entity.Person person = new Entity.Person();
+byte[] personBytes = person.toByteString();</p>
+
+<p>// 解析byte数据
+Entity.Person parsedPerson = Entity.Person.parseFrom(psersonBytes);</p>
+
+<p>```</p>
+
+<h2>PS</h2>
+
+<p>第一次使用protobuf的时候选择了<a href="https://github.com/square/wire">wire</a>，
+这是一个由square公司开发的应用于Android的protobuf的库。在使用过程中发现wire无法混淆，这在一些需要对自己的通讯协议进行加密的情况下不是很适用。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ubuntu12.04 GoAgent下载Android 4.0源码]]></title>

@@ -1,24 +1,101 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Sonic's blog.]]></title>
-  <link href="http://blog.sonicpart.com/atom.xml" rel="self"/>
-  <link href="http://blog.sonicpart.com/"/>
-  <updated>2014-05-27T00:40:22+08:00</updated>
-  <id>http://blog.sonicpart.com/</id>
-  <author>
-    <name><![CDATA[Sonic Young]]></name>
-    <email><![CDATA[short7116@gmail.com]]></email>
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+<!DOCTYPE HTML>
 
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Android中使用protobuf - Sonic's blog.</title>
+	<meta name="author" content="Sonic Young">
+
+	
+	<meta name="description" content="Android中使用protobuf Android中使用protobuf Protobuf是Google开发的一种数据描述语言，大家可以参照json和xml来进行理解。但是相对于json和xml，Protobu的传输内容和解析熟读却有着极大的优势。 Protobuf分为complier（ &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Sonic's blog." type="application/atom+xml">
+	
+	<link rel="canonical" href="http://blog.sonicpart.com/blog/2014/05/26/androidzhong-shi-yong-protobuf/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
   
-  <entry>
-    <title type="html"><![CDATA[Android中使用protobuf]]></title>
-    <link href="http://blog.sonicpart.com/blog/2014/05/26/androidzhong-shi-yong-protobuf/"/>
-    <updated>2014-05-26T23:07:52+08:00</updated>
-    <id>http://blog.sonicpart.com/blog/2014/05/26/androidzhong-shi-yong-protobuf</id>
-    <content type="html"><![CDATA[<h1>Android中使用protobuf</h1>
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.profilepic').append("<img src='https://s.gravatar.com/avatar/" + MD5("short7116@gmail.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		});
+	</script>
+	
+</div>
+
+	<h1><a href="/">Sonic Young</a></h1>
+
+<nav id="main-nav"><ul class="main">
+    <li><a href="/blog/archives">iOS专题</a></li>
+    <li><a href="/blog/archives">Android专题</a></li>
+    <li><a href="#">关于我</a></li>
+</ul>
+
+	<p class="subtitle">iOS & Android 开发者， 现就职于厦门，热爱产品设计。</p>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+			<a class="weibo" href="http://www.weibo.com/ysy7116" title="Weibo">Weibo</a>
+		
+		
+			<a class="email" href="mailto:short7116@gmail.com" title="Email">Email</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+    	
+    	
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Android中使用protobuf</h1>
+	<div class="entry-content" itemprop="articleBody"><h1>Android中使用protobuf</h1>
 
 <p>Protobuf是Google开发的一种数据描述语言，大家可以参照json和xml来进行理解。但是相对于json和xml，Protobu的传输内容和解析熟读却有着极大的优势。</p>
 
@@ -145,76 +222,32 @@
 
 <p>第一次使用protobuf的时候选择了<a href="https://github.com/square/wire">wire</a>，
 这是一个由square公司开发的应用于Android的protobuf的库。在使用过程中发现wire无法混淆，这在一些需要对自己的通讯协议进行加密的情况下不是很适用。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ubuntu12.04 GoAgent下载Android 4.0源码]]></title>
-    <link href="http://blog.sonicpart.com/blog/2014/04/15/ubuntu12-dot-04-goagentxia-zai-androidyuan-ma/"/>
-    <updated>2014-04-15T21:37:38+08:00</updated>
-    <id>http://blog.sonicpart.com/blog/2014/04/15/ubuntu12-dot-04-goagentxia-zai-androidyuan-ma</id>
-    <content type="html"><![CDATA[<p>由于GFW的原因在国内下载Android源码经常因为网络错误导致无法下载，故而试着通过Goagent来进行下载。先按照教程下载配置 <a href="https://code.google.com/p/goagent/wiki/GoAgent_Linux">GoAgent</a>。</p>
+</div>
 
-<h3>设置代理</h3>
+</article>
 
-<p>设置curl和repo的代理，如果有自定义GoAgent的代理端口，则需要把8087替换为自定义的代理端口。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">export </span><span class="nv">http_proxy</span><span class="o">=</span>http://127.0.0.1:8087
-</span><span class='line'><span class="nb">export </span><span class="nv">HTTP_PROXY</span><span class="o">=</span>http://127.0.0.1:8087
-</span><span class='line'><span class="nb">export </span><span class="nv">HTTPS_PROXY</span><span class="o">=</span>https://127.0.0.1:8087
-</span></code></pre></td></tr></table></div></figure>
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
 
 
-<h3>下载repo</h3>
+</div>
+			</div>
+			<footer id="footer" class="inner">Copyright &copy; 2014
 
-<p>1、在当前用户目录下创建bin目录，并把该目录添加到终端的环境变量中。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>mkdir ~/bin
-</span><span class='line'><span class="nv">$ PATH</span><span class="o">=</span>~/bin:<span class="nv">$PATH</span>
-</span></code></pre></td></tr></table></div></figure>
+    Sonic Young
 
 
-<p>2、下载repo并设置权限</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>curl http://commondatastorage.googleapis.com/git-repo-downloads/repo &gt; ~/bin/repo
-</span><span class='line'><span class="nv">$ </span>chmod a+x ~/bin/repo
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>初始化repo</h3>
-
-<p>1、创建一个Android源码的路径，并进入。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>mkdir ~/android-4.0.1_r1
-</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>android-4.0.1_r1
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>2、指定repo要下载的分支，此时会提示你需要输入邮箱和姓名，按照提示输入即可。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>repo init -u https://android.googlesource.com/platform/manifest -b android-4.0.1_r1
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>下载源码</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>repo sync
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-]]></content>
-  </entry>
-  
-</feed>
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+		</div>
+	</div>
+</body>
+</html>
